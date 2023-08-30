@@ -1,2 +1,0 @@
-Get-Process
-Get-UpTime
