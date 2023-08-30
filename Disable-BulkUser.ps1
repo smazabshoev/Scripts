@@ -3,5 +3,7 @@ $Students = Import-Csv 'C:\Users\shavkat.mazabshoev\OneDrive - University of Cen
 
 foreach ($Student in $Students)
 	{
-		Get-ADUser -Filter "Name -eq '$($Student.Givenname && $Student.Surname)'" 
+		Get-ADUser -Filter "Name -eq '$($Student.Givenname && $Student.Surname)'" |
+		Disable-ADAccount |
+		Write-Host "$Student.Givenname && $Student.Surname is disabled"
 	}

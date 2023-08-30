@@ -9,7 +9,7 @@ The first name of requested user account to query.
 .PARAMETER Surname
 The last name of requested user account to query.
 .EXAMPLE
-Disable-Student Shavkat -Lastname Mazabshoev
+Disable-Student -Givenname Shavkat -Lastname Mazabshoev
 .EXAMPLE
 Disable-Student Shavkat Mazabshoev
 #>
