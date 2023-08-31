@@ -27,9 +27,16 @@ param (
 
 # Get user account by quering they are First and Last name.
 Get-ADUser -Filter "Name -eq '$($Givenname && $Surname)'" | 
+
 # Change user account password.
 Set-ADAccountPassword -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "P@ssword" -Force) |
+
 # Set user account password be changed at first logon.
 Set-ADUser -ChangePasswordAtLogon $true
+
+
 # Exit code 
-Write-Host $LASTEXITCODE
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "($Givenname $Surname password changed successfully"
+else Write-Host "(Failed to change $Givenname $Surname password"
+}
