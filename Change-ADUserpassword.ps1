@@ -32,4 +32,7 @@ Set-ADAccountPassword -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "
 # Set user account password be changed at first logon.
 Set-ADUser -ChangePasswordAtLogon $true
 # Exit code 
-Write-Host $LASTEXITCODE
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "($Givenname $Surname password changed successfully"
+else Write-Host "(Failed to change $Givenname $Surname password"
+}
