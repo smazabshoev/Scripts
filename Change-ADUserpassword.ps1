@@ -36,7 +36,9 @@ Set-ADUser -ChangePasswordAtLogon $true
 
 
 # Exit code 
-if ($LASTEXITCODE -eq 0) {
+if ($LASTEXITCODE -eq 0) 
+{
     Write-Host "($Givenname $Surname password changed successfully"
-else Write-Host "(Failed to change $Givenname $Surname password"
+}else { 
+    Write-Host "Failed to change $Givenname $Surname password"
 }
