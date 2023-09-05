@@ -28,11 +28,18 @@ param (
 )
 
 # Enable user account by quering they are First and Last name.
-Get-ADUser -Filter "Name -eq '$($Givenname && $Surname)'" | Enable-ADAccount 
+$Identity = (Get-ADUser -Filter "Name -eq '$($Givenname && $Surname)'" )
+
+Enable-ADAccount -Identity $Identity
 
 
-# Print at result message on screen.
-Write-Host "$Givenname $Surname user account is enabled"
+# Exit code 
+if ($LASTEXITCODE -eq 0) 
+{
+    Write-Host "$Givenname $Surname user's account is enabled" -ForegroundColor Green
+}else { 
+    Write-Host "Failed to enable $Givenname $Surname user account" -ForegroundColor Red
+}
 
 # Provide status report on screen.
-Get-ADUser -Filter "Name -eq '$($Givenname && $Surname)'" | Select-Object Name, Enabled
+Get-ADUser -Identity $Identity | Select-Object Name, Enabled
