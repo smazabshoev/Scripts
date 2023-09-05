@@ -36,3 +36,6 @@ Write-Host "$Givenname $Surname user account is disabled"
 
 # Provide status report on screen.
 Get-ADUser -Filter "Name -eq '$($Givenname && $Surname)'" | Select-Object Name, Enabled
+
+
+Get-ADcomputer  -Filter "Description -like '$($Givenname && $Surname +'*')'" 
